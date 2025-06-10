@@ -1,0 +1,484 @@
+/* StockWizard - Modern Dark Theme */
+:root {
+  --primary-bg: #2c3e50;
+  --secondary-bg: #34495e;
+  --accent-blue: #3498db;
+  --accent-green: #27ae60;
+  --accent-red: #e74c3c;
+  --text-primary: #ffffff;
+  --text-secondary: #bdc3c7;
+  --text-muted: #7f8c8d;
+  --border-color: #4a5568;
+  --card-bg: rgba(52, 73, 94, 0.8);
+  --input-bg: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Authentication Styles */
+.auth-wrapper {
+  max-width: 400px;
+  width: 90%;
+  padding: 2rem 1.5rem;
+}
+
+/* Logo Styles */
+.logo-section {
+  margin-bottom: 3rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.phone-frame {
+  width: 80px;
+  height: 120px;
+  border: 3px solid var(--text-primary);
+  border-radius: 12px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 50px;
+  z-index: 2;
+}
+
+.chart-bar {
+  width: 12px;
+  border-radius: 2px;
+}
+
+.bar-1 {
+  height: 25px;
+  background: var(--accent-green);
+}
+
+.bar-2 {
+  height: 40px;
+  background: var(--accent-red);
+}
+
+.bar-3 {
+  height: 50px;
+  background: var(--accent-green);
+}
+
+.trend-arrow {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  right: 15px;
+  height: 2px;
+  background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
+  z-index: 1;
+}
+
+.trend-arrow::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--accent-blue);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Auth Toggle */
+.auth-toggle-container {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-toggle {
+  display: flex;
+  background: var(--input-bg);
+  border-radius: 25px;
+  padding: 4px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.toggle-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background: var(--accent-blue);
+  color: var(--text-primary);
+}
+
+.toggle-btn:hover:not(.active) {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Form Styles */
+.auth-form {
+  width: 100%;
+}
+
+.form-group {
+  position: relative;
+}
+
+.auth-input {
+  background: var(--input-bg);
+  border: 2px solid transparent;
+  border-radius: 25px;
+  color: var(--text-primary);
+  padding: 16px 24px;
+  font-size: 16px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.auth-input::placeholder {
+  color: var(--text-muted);
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.auth-submit-btn {
+  background: var(--accent-blue);
+  border: none;
+  border-radius: 25px;
+  color: var(--text-primary);
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.auth-submit-btn:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+/* Divider */
+.auth-divider {
+  position: relative;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.auth-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.auth-divider span {
+  background: var(--primary-bg);
+  padding: 0 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Social Login */
+.social-btn {
+  background: var(--input-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  color: var(--text-primary);
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-secondary);
+  transform: translateY(-1px);
+}
+
+.google-btn:hover {
+  border-color: #db4437;
+}
+
+.apple-btn:hover {
+  border-color: #000000;
+}
+
+/* Register Link */
+.register-link {
+  margin-top: 1rem;
+}
+
+.register-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.register-link-text {
+  color: var(--accent-green);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link-text:hover {
+  color: #2ecc71;
+  text-decoration: underline;
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+  min-height: 100vh;
+  background: var(--primary-bg);
+}
+
+.dashboard-nav {
+  background: var(--secondary-bg) !important;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-welcome {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.dashboard-content {
+  padding: 2rem 1rem;
+}
+
+.dashboard-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.card-header {
+  background: transparent;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Stat Cards */
+.stat-card {
+  background: var(--input-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.stat-primary .stat-icon {
+  background: rgba(52, 152, 219, 0.2);
+  color: var(--accent-blue);
+}
+
+.stat-success .stat-icon {
+  background: rgba(39, 174, 96, 0.2);
+  color: var(--accent-green);
+}
+
+.stat-info .stat-icon {
+  background: rgba(155, 89, 182, 0.2);
+  color: #9b59b6;
+}
+
+.stat-content h6 {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-content h4 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Empty State */
+.empty-state {
+  color: var(--text-muted);
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 62, 80, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .app-title {
+    font-size: 1.75rem;
+  }
+
+  .phone-frame {
+    width: 70px;
+    height: 100px;
+  }
+
+  .chart-container {
+    height: 40px;
+    gap: 4px;
+  }
+
+  .chart-bar {
+    width: 10px;
+  }
+
+  .bar-1 {
+    height: 20px;
+  }
+  .bar-2 {
+    height: 30px;
+  }
+  .bar-3 {
+    height: 40px;
+  }
+
+  .dashboard-content {
+    padding: 1rem 0.5rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-wrapper {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .auth-input,
+  .auth-submit-btn,
+  .social-btn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-wrapper {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.dashboard-card {
+  animation: fadeInUp 0.6s ease-out;
+}
