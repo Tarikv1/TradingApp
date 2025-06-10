@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StockWizard - Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <!-- Enhanced Navigation -->
+  <nav class="top-nav">
+    <div class="nav-brand">
+      <img src="../auth/assets/icons/logo.png" alt="StockWizard" class="nav-logo" />
+      <h1 class="nav-title">StockWizard</h1>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#" class="nav-link active">
+        <i class="fas fa-chart-line"></i>
+        Dashboard
+      </a>
+      <a href="../watchlist/watchlist.html" class="nav-link">
+        <i class="fas fa-eye"></i>
+        Watchlist
+      </a>
+      <a href="../profile/profile.html" class="nav-link">
+        <i class="fas fa-user"></i>
+        Profile
+      </a>
+      <a href="../assets/assets.html" class="nav-link">
+        <i class="fas fa-wallet"></i>
+        Assets
+      </a>
+      <a href="../upgrade-page/upgrade-page.html" class="nav-link upgrade-link">
+        <i class="fas fa-rocket"></i>
+        Upgrade
+      </a>
+    </div>
+    
+    <div class="nav-profile">
+      <img id="user-avatar" src="" alt="User Avatar" class="user-avatar">
+      <button id="signin-btn" class="signin-btn" style="display: none;">
+        <i class="fas fa-sign-in-alt"></i>
+        Sign In
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Welcome Header -->
+    <header class="welcome-header">
+      <div class="welcome-content">
+        <h1 id="welcome-title">Welcome back</h1>
+        <p id="welcome-subtitle">Here's what's happening with your investments today</p>
+      </div>
+      <div class="header-stats">
+        <div class="stat-item">
+          <i class="fas fa-eye"></i>
+          <span id="watchlist-count">0</span>
+          <small>Watching</small>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-chart-line"></i>
+          <span id="portfolio-value">€0.00</span>
+          <small>Portfolio</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Enhanced Search -->
+    <div class="search-section">
+      <div class="search-bar">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search stocks, crypto, commodities..." />
+        <ul id="searchDropdown" class="search-dropdown"></ul>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2 class="section-title">
+        <i class="fas fa-bolt"></i>
+        Quick Actions
+      </h2>
+      <div class="actions-grid">
+        <button class="action-card" id="add-stock-btn">
+          <i class="fas fa-plus-circle"></i>
+          <span>Add to Watchlist</span>
+        </button>
+        <button class="action-card" id="view-portfolio-btn">
+          <i class="fas fa-briefcase"></i>
+          <span>View Portfolio</span>
+        </button>
+        <button class="action-card" id="market-news-btn">
+          <i class="fas fa-newspaper"></i>
+          <span>Market News</span>
+        </button>
+        <button class="action-card" id="analytics-btn">
+          <i class="fas fa-chart-bar"></i>
+          <span>Analytics</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Watchlist Section -->
+    <section class="watchlist-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="fas fa-eye"></i>
+          Your Watchlist
+        </h2>
+        <a href="../watchlist/watchlist.html" class="view-all-btn">
+          View All
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div id="watchlistCards" class="watchlist-grid">
+        <!-- Watchlist cards will be populated by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Pro Upgrade CTA -->
+    <section class="upgrade-section">
+      <div class="pro-upgrade">
+        <div class="upgrade-content">
+          <div class="upgrade-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div class="upgrade-text">
+            <h3>Upgrade to StockWizard Pro</h3>
+            <p>Get real-time data, advanced analytics, and exclusive features</p>
+          </div>
+        </div>
+        <div class="upgrade-features">
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Real-time quotes</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Advanced charts</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Portfolio analytics</span>
+          </div>
+        </div>
+        <a href="../upgrade-page/upgrade-page.html" class="upgrade-btn">
+          <span>Upgrade Now</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Market Overview -->
+    <section class="market-overview">
+      <h2 class="section-title">
+        <i class="fas fa-globe"></i>
+        Market Overview
+      </h2>
+      <div class="market-stats">
+        <div class="market-stat">
+          <div class="stat-header">
+            <span class="stat-name">S&P 500</span>
+            <span class="stat-change up">+1.2%</span>
+          </div>
+          <div class="stat-value">4,567.89</div>
+        </div>
+        <div class="market-stat">
+          <div class="stat-header">
+            <span class="stat-name">NASDAQ</span>
+            <span class="stat-change down">-0.8%</span>
+          </div>
+          <div class="stat-value">14,123.45</div>
+        </div>
+        <div class="market-stat">
+          <div class="stat-header">
+            <span class="stat-name">Bitcoin</span>
+            <span class="stat-change up">+3.4%</span>
+          </div>
+          <div class="stat-value">$67,420</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Enhanced Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

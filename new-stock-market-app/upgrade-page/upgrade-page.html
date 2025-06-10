@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockWizard - Upgrade to Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/upgrade-page.css" />
+</head>
+<body>
+  <!-- Enhanced Navigation -->
+  <nav class="top-nav">
+    <div class="nav-brand">
+      <img src="../auth/assets/icons/logo.png" alt="StockWizard" class="nav-logo" />
+      <h1 class="nav-title">StockWizard</h1>
+    </div>
+    
+    <div class="nav-links">
+      <a href="../dashboard/dashboard.html" class="nav-link">
+        <i class="fas fa-chart-line"></i>
+        Dashboard
+      </a>
+      <a href="../watchlist/watchlist.html" class="nav-link">
+        <i class="fas fa-eye"></i>
+        Watchlist
+      </a>
+      <a href="../profile/profile.html" class="nav-link">
+        <i class="fas fa-user"></i>
+        Profile
+      </a>
+      <a href="../assets/assets.html" class="nav-link">
+        <i class="fas fa-wallet"></i>
+        Assets
+      </a>
+      <a href="#" class="nav-link active upgrade-link">
+        <i class="fas fa-rocket"></i>
+        Upgrade
+      </a>
+    </div>
+    
+    <div class="nav-profile">
+      <img id="user-avatar" src="" alt="User Avatar" class="user-avatar">
+      <button id="signin-btn" class="signin-btn" style="display: none;">
+        <i class="fas fa-sign-in-alt"></i>
+        Sign In
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-crown"></i>
+          <span>Premium Experience</span>
+        </div>
+        <h1 class="hero-title">
+          Upgrade to <span class="gradient-text">StockWizard Pro</span>
+        </h1>
+        <p class="hero-subtitle">
+          Unlock advanced features, real-time data, and professional-grade analytics to supercharge your investment journey.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Active Users</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">$2M+</div>
+            <div class="stat-label">Assets Tracked</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99.9%</div>
+            <div class="stat-label">Uptime</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card card-1">
+          <i class="fas fa-chart-line"></i>
+          <span>Real-time Data</span>
+        </div>
+        <div class="floating-card card-2">
+          <i class="fas fa-brain"></i>
+          <span>AI Insights</span>
+        </div>
+        <div class="floating-card card-3">
+          <i class="fas fa-shield-alt"></i>
+          <span>Advanced Security</span>
+        </div>
+        <div class="central-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <div class="section-header">
+        <h2>Choose Your Plan</h2>
+        <p>Start with our free tier or unlock unlimited potential with Pro</p>
+      </div>
+
+      <div class="pricing-toggle">
+        <span class="toggle-label">Monthly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="pricing-toggle" />
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label">Annual <span class="save-badge">Save 20%</span></span>
+      </div>
+
+      <div class="pricing-cards">
+        <!-- Free Plan -->
+        <div class="pricing-card free-plan">
+          <div class="plan-header">
+            <h3>Free</h3>
+            <div class="plan-price">
+              <span class="currency">$</span>
+              <span class="amount">0</span>
+              <span class="period">/month</span>
+            </div>
+            <p class="plan-description">Perfect for getting started with basic portfolio tracking</p>
+          </div>
+          
+          <div class="plan-features">
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Up to 10 stocks in watchlist</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Basic portfolio tracking</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Daily price updates</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Simple charts</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Email support</span>
+            </div>
+          </div>
+          
+          <button class="plan-button current-plan" disabled>
+            <i class="fas fa-check"></i>
+            Current Plan
+          </button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card pro-plan popular">
+          <div class="popular-badge">
+            <i class="fas fa-star"></i>
+            Most Popular
+          </div>
+          
+          <div class="plan-header">
+            <h3>Pro</h3>
+            <div class="plan-price">
+              <span class="currency">$</span>
+              <span class="amount monthly-price">19</span>
+              <span class="amount annual-price" style="display: none;">15</span>
+              <span class="period monthly-period">/month</span>
+              <span class="period annual-period" style="display: none;">/month</span>
+            </div>
+            <p class="annual-note" style="display: none;">Billed annually ($180/year)</p>
+            <p class="plan-description">Everything you need for professional portfolio management</p>
+          </div>
+          
+          <div class="plan-features">
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Unlimited watchlist items</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Real-time price updates</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Advanced charts & analytics</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Portfolio performance tracking</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Price alerts & notifications</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>AI-powered insights</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Export data (CSV, PDF)</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Priority support</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Mobile app access</span>
+            </div>
+          </div>
+          
+          <button class="plan-button upgrade-button" id="upgrade-button">
+            <i class="fas fa-rocket"></i>
+            Upgrade to Pro
+          </button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card enterprise-plan">
+          <div class="plan-header">
+            <h3>Enterprise</h3>
+            <div class="plan-price">
+              <span class="amount">Custom</span>
+            </div>
+            <p class="plan-description">Tailored solutions for institutions and large teams</p>
+          </div>
+          
+          <div class="plan-features">
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Everything in Pro</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Team collaboration tools</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Custom integrations</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Advanced API access</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Dedicated account manager</span>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>SLA guarantee</span>
+            </div>
+          </div>
+          
+          <button class="plan-button contact-button">
+            <i class="fas fa-phone"></i>
+            Contact Sales
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Comparison -->
+    <section class="features-section">
+      <div class="section-header">
+        <h2>Feature Comparison</h2>
+        <p>See exactly what you get with each plan</p>
+      </div>
+
+      <div class="comparison-table">
+        <div class="table-header">
+          <div class="feature-column">Features</div>
+          <div class="plan-column">Free</div>
+          <div class="plan-column">Pro</div>
+          <div class="plan-column">Enterprise</div>
+        </div>
+
+        <div class="table-body">
+          <div class="table-row">
+            <div class="feature-name">
+              <i class="fas fa-list"></i>
+              Watchlist Items
+            </div>
+            <div class="plan-feature">Up to 10</div>
+            <div class="plan-feature highlighted">Unlimited</div>
+            <div class="plan-feature">Unlimited</div>
+          </div>
+
+          <div class="table-row">
+            <div class="feature-name">
+              <i class="fas fa-clock"></i>
+              Data Updates
+            </div>
+            <div class="plan-feature">Daily</div>
+            <div class="plan-feature highlighted">Real-time</div>
+            <div class="plan-feature">Real-time</div>
+          </div>
+
+          <div class="table-row">
+            <div class="feature-name">
+              <i class="fas fa-chart-bar"></i>
+              Advanced Charts
+            </div>
+            <div class="plan-feature"><i class="fas fa-times"></i></div>
+            <div class="plan-feature highlighted"><i class="fas fa-check"></i></div>
+            <div class="plan-feature"><i class="fas fa-check"></i></div>
+          </div>
+
+          <div class="table-row">
+            <div class="feature-name">
+              <i class="fas fa-bell"></i>
+              Price Alerts
+            </div>
+            <div class="plan-feature"><i class="fas fa-times"></i></div>
+            <div class="plan-feature highlighted"><i class="fas fa-check"></i></div>
+            <div class="plan-feature"><i class="fas fa-check"></i></div>
+          </div>
+
+          <div class="table-row">
+            <div class="feature-name">
+              <i class="fas fa-robot"></i>
+              AI Insights
+            </div>
+            <div class="plan-feature"><i class="fas fa-times"></i></div>
+            <div class="plan-feature highlighted"><i class="fas fa-check"></i></div>
+            <div class="plan-feature"><i class="fas fa-check"></i></div>
+          </div>
+
+          <div class="table-row">
+            <div class="feature-name">
+              <i class="fas fa-users"></i>
+              Team Features
+            </div>
+            <div class="plan-feature"><i class="fas fa-times"></i></div>
+            <div class="plan-feature"><i class="fas fa-times"></i></div>
+            <div class="plan-feature"><i class="fas fa-check"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+      <div class="section-header">
+        <h2>What Our Users Say</h2>
+        <p>Join thousands of satisfied investors</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "StockWizard Pro has completely transformed how I manage my portfolio. The real-time data and AI insights are game-changers."
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=1" alt="Sarah Chen" />
+            <div class="author-info">
+              <div class="author-name">Sarah Chen</div>
+              <div class="author-title">Portfolio Manager</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "The advanced analytics and price alerts have helped me make better investment decisions. Worth every penny!"
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=2" alt="Michael Rodriguez" />
+            <div class="author-info">
+              <div class="author-name">Michael Rodriguez</div>
+              <div class="author-title">Day Trader</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "Clean interface, powerful features, and excellent customer support. StockWizard Pro is exactly what I needed."
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=3" alt="Emily Johnson" />
+            <div class="author-info">
+              <div class="author-name">Emily Johnson</div>
+              <div class="author-title">Financial Advisor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about StockWizard Pro</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I cancel my subscription anytime?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, you can cancel your subscription at any time. Your Pro features will remain active until the end of your current billing period.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer a free trial?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We offer a 14-day free trial for all new Pro subscribers. No credit card required to start your trial.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What payment methods do you accept?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is my data secure?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely. We use bank-level encryption and security measures to protect your data. We never share or sell your personal information.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I switch between plans?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Supercharge Your Investing?</h2>
+        <p>Join thousands of investors who trust StockWizard Pro for their portfolio management needs.</p>
+        <div class="cta-buttons">
+          <button class="cta-button primary" id="cta-upgrade">
+            <i class="fas fa-rocket"></i>
+            Start Free Trial
+          </button>
+          <button class="cta-button secondary" id="contact-sales">
+            <i class="fas fa-phone"></i>
+            Contact Sales
+          </button>
+        </div>
+        <p class="cta-note">14-day free trial • No credit card required • Cancel anytime</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Enhanced Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>
+          <i class="fas fa-phone"></i>
+          Contact Sales
+        </h3>
+        <button class="modal-close" id="contact-modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <form id="contact-form" class="modal-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="contact-name">
+              <i class="fas fa-user"></i>
+              Full Name
+            </label>
+            <input type="text" id="contact-name" required placeholder="John Doe" />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">
+              <i class="fas fa-envelope"></i>
+              Email
+            </label>
+            <input type="email" id="contact-email" required placeholder="john@company.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-company">
+              <i class="fas fa-building"></i>
+              Company
+            </label>
+            <input type="text" id="contact-company" placeholder="Company Name" />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-size">
+              <i class="fas fa-users"></i>
+              Team Size
+            </label>
+            <select id="contact-size">
+              <option value="">Select team size</option>
+              <option value="1-10">1-10 employees</option>
+              <option value="11-50">11-50 employees</option>
+              <option value="51-200">51-200 employees</option>
+              <option value="200+">200+ employees</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="contact-message">
+              <i class="fas fa-comment"></i>
+              Message
+            </label>
+            <textarea id="contact-message" rows="4" placeholder="Tell us about your needs..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" id="contact-cancel">
+            <i class="fas fa-times"></i>
+            Cancel
+          </button>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="js/upgrade-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockWizard - Watchlist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/watchlist.css" />
+</head>
+<body>
+  <!-- Enhanced Navigation -->
+  <nav class="top-nav">
+    <div class="nav-brand">
+      <img src="../auth/assets/icons/logo.png" alt="StockWizard" class="nav-logo" />
+      <h1 class="nav-title">StockWizard</h1>
+    </div>
+    
+    <div class="nav-links">
+      <a href="../dashboard/dashboard.html" class="nav-link">
+        <i class="fas fa-chart-line"></i>
+        Dashboard
+      </a>
+      <a href="#" class="nav-link active">
+        <i class="fas fa-eye"></i>
+        Watchlist
+      </a>
+      <a href="../profile/profile.html" class="nav-link">
+        <i class="fas fa-user"></i>
+        Profile
+      </a>
+      <a href="../assets/assets.html" class="nav-link">
+        <i class="fas fa-wallet"></i>
+        Assets
+      </a>
+      <a href="../upgrade-page/upgrade-page.html" class="nav-link upgrade-link">
+        <i class="fas fa-rocket"></i>
+        Upgrade
+      </a>
+    </div>
+    
+    <div class="nav-profile">
+      <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search & add stocks..." autocomplete="off" />
+        <ul id="searchDropdown"></ul>
+      </div>
+      <img id="user-avatar" src="" alt="Avatar" class="user-avatar" />
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1>Your Watchlist</h1>
+      <p>Track your favorite stocks, crypto, and commodities in real-time</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Cryptocurrency Section -->
+      <section class="category">
+        <div class="category-header">
+          <h2>
+            <i class="fab fa-bitcoin"></i>
+            Cryptocurrency
+          </h2>
+          <span class="category-count" id="crypto-count">0</span>
+        </div>
+        <div id="cryptoCards" class="watchlist-grid">
+          <!-- Crypto cards will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Stocks Section -->
+      <section class="category">
+        <div class="category-header">
+          <h2>
+            <i class="fas fa-chart-line"></i>
+            Stocks
+          </h2>
+          <span class="category-count" id="stocks-count">0</span>
+        </div>
+        <div id="stockCards" class="watchlist-grid">
+          <!-- Stock cards will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Commodities Section -->
+      <section class="category">
+        <div class="category-header">
+          <h2>
+            <i class="fas fa-coins"></i>
+            Commodities
+          </h2>
+          <span class="category-count" id="commodities-count">0</span>
+        </div>
+        <div id="commodityCards" class="watchlist-grid">
+          <!-- Commodity cards will be populated by JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>© <span id="year"></span> StockWizard. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Enhanced Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="js/watchlist.js"></script>
+</body>
+</html>

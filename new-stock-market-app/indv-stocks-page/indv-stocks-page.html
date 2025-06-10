@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockWizard - Stock Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/indv-stocks-page.css" />
+</head>
+<body>
+  <!-- Enhanced Navigation -->
+  <nav class="top-nav">
+    <div class="nav-brand">
+      <img src="../auth/assets/icons/logo.png" alt="StockWizard" class="nav-logo" />
+      <h1 class="nav-title">StockWizard</h1>
+    </div>
+    
+    <div class="nav-links">
+      <a href="../dashboard/dashboard.html" class="nav-link">
+        <i class="fas fa-chart-line"></i>
+        Dashboard
+      </a>
+      <a href="../watchlist/watchlist.html" class="nav-link">
+        <i class="fas fa-eye"></i>
+        Watchlist
+      </a>
+      <a href="../profile/profile.html" class="nav-link">
+        <i class="fas fa-user"></i>
+        Profile
+      </a>
+      <a href="../assets/assets.html" class="nav-link">
+        <i class="fas fa-wallet"></i>
+        Assets
+      </a>
+      <a href="../upgrade-page/upgrade-page.html" class="nav-link upgrade-link">
+        <i class="fas fa-rocket"></i>
+        Upgrade
+      </a>
+    </div>
+    
+    <div class="nav-profile">
+      <img id="user-avatar" src="" alt="User Avatar" class="user-avatar">
+      <button id="signin-btn" class="signin-btn" style="display: none;">
+        <i class="fas fa-sign-in-alt"></i>
+        Sign In
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Stock Header -->
+    <header class="stock-header">
+      <div class="stock-info">
+        <div class="stock-icon">
+          <span id="stock-icon-text">S</span>
+        </div>
+        <div class="stock-details">
+          <h1 id="stock-name">Loading...</h1>
+          <div class="stock-meta">
+            <span id="stock-symbol" class="stock-symbol">SYMBOL</span>
+            <span class="stock-exchange">NASDAQ</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="stock-price">
+        <div class="current-price" id="current-price">$0.00</div>
+        <div class="price-change" id="price-change">
+          <span class="change-amount" id="change-amount">$0.00</span>
+          <span class="change-percent" id="change-percent">(0.00%)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Chart Section -->
+    <section class="chart-section">
+      <div class="section-header">
+        <h2>
+          <i class="fas fa-chart-area"></i>
+          Price Chart
+        </h2>
+        <div class="timeframe-selector">
+          <button data-range="1D" class="time-btn active">1D</button>
+          <button data-range="1W" class="time-btn">1W</button>
+          <button data-range="1M" class="time-btn">1M</button>
+          <button data-range="3M" class="time-btn">3M</button>
+          <button data-range="1Y" class="time-btn">1Y</button>
+        </div>
+      </div>
+      
+      <div class="chart-container">
+        <canvas id="stockChart"></canvas>
+        <div id="chart-loading" class="chart-loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Loading chart data...</p>
+        </div>
+        <div id="chart-error" class="chart-error" style="display: none;">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p>Unable to load chart data</p>
+          <button onclick="retryLoadChart()" class="retry-btn">
+            <i class="fas fa-redo"></i>
+            Retry
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="action-section">
+      <div class="action-buttons">
+        <button class="action-btn buy-btn">
+          <i class="fas fa-plus"></i>
+          <span>Buy</span>
+        </button>
+        <button class="action-btn sell-btn">
+          <i class="fas fa-minus"></i>
+          <span>Sell</span>
+        </button>
+        <button class="action-btn watchlist-btn" id="watchlist-btn">
+          <i class="fas fa-eye"></i>
+          <span id="watchlist-text">Add to Watchlist</span>
+        </button>
+        <button class="action-btn alert-btn">
+          <i class="fas fa-bell"></i>
+          <span>Set Alert</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Stock Data Grid -->
+    <section class="data-section">
+      <h2 class="section-title">
+        <i class="fas fa-info-circle"></i>
+        Key Statistics
+      </h2>
+      
+      <div class="data-grid">
+        <div class="data-card">
+          <div class="data-icon">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <div class="data-info">
+            <div class="data-label">Volume</div>
+            <div class="data-value" id="volume">-</div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-icon">
+            <i class="fas fa-door-open"></i>
+          </div>
+          <div class="data-info">
+            <div class="data-label">Daily Open</div>
+            <div class="data-value" id="daily-open">-</div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-icon">
+            <i class="fas fa-history"></i>
+          </div>
+          <div class="data-info">
+            <div class="data-label">Previous Close</div>
+            <div class="data-value" id="previous-close">-</div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-icon">
+            <i class="fas fa-arrow-up"></i>
+          </div>
+          <div class="data-info">
+            <div class="data-label">Day High</div>
+            <div class="data-value" id="day-high">-</div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-icon">
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <div class="data-info">
+            <div class="data-label">Day Low</div>
+            <div class="data-value" id="day-low">-</div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-icon">
+            <i class="fas fa-coins"></i>
+          </div>
+          <div class="data-info">
+            <div class="data-label">Market Cap</div>
+            <div class="data-value" id="market-cap">-</div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-icon">
+            <i class="fas fa-percentage"></i>
+          </div>
+          <div class="data-info">
+            <div class="data-label">P/E Ratio</div>
+            <div class="data-value" id="pe-ratio">-</div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-icon">
+            <i class="fas fa-calendar-week"></i>
+          </div>
+          <div class="data-info">
+            <div class="data-label">52W Range</div>
+            <div class="data-value" id="week-range">-</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+      <div class="section-header">
+        <h2>
+          <i class="fas fa-newspaper"></i>
+          Latest News
+        </h2>
+        <button class="refresh-news-btn" id="refresh-news">
+          <i class="fas fa-sync-alt"></i>
+          Refresh
+        </button>
+      </div>
+      
+      <div id="news-list" class="news-list">
+        <div class="news-loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Loading news...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Stocks -->
+    <section class="related-section">
+      <h2 class="section-title">
+        <i class="fas fa-sitemap"></i>
+        Related Stocks
+      </h2>
+      
+      <div id="related-stocks" class="related-grid">
+        <!-- Related stocks will be populated by JavaScript -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Enhanced Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Set Alert Modal -->
+  <div id="alert-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>
+          <i class="fas fa-bell"></i>
+          Set Price Alert
+        </h3>
+        <button class="modal-close" id="alert-modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <form id="alert-form" class="modal-form">
+        <div class="form-group">
+          <label for="alert-price">
+            <i class="fas fa-dollar-sign"></i>
+            Alert Price
+          </label>
+          <input type="number" id="alert-price" step="0.01" placeholder="0.00" required />
+        </div>
+
+        <div class="form-group">
+          <label for="alert-type">
+            <i class="fas fa-arrows-alt-v"></i>
+            Alert Type
+          </label>
+          <select id="alert-type" required>
+            <option value="above">Price goes above</option>
+            <option value="below">Price goes below</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" id="alert-cancel">
+            <i class="fas fa-times"></i>
+            Cancel
+          </button>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-bell"></i>
+            Set Alert
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Config and Page Script -->
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="js/indv-stocks-page.js"></script>
+</body>
+</html>

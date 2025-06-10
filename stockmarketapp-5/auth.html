@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auth - Stock App</title>
+
+  <!-- Link to your auth stylesheet -->
+  <link rel="stylesheet" href="./css/auth-style.css" />
+
+  <!-- Bootstrap CSS (optional) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div id="authContainer">
+    <div class="auth-wrapper">
+      <div class="logo-section">
+        <div class="logo-container">
+          <img
+            src="./assets/logo.png"
+            alt="App Logo"
+            class="app-logo"
+          />
+        </div>
+        <h1 class="app-title">StockWizard</h1>
+      </div>
+
+      <div class="auth-toggle-container">
+        <div class="auth-toggle">
+          <button class="toggle-btn active" id="loginToggle">Login</button>
+          <button class="toggle-btn" id="registerToggle">Register</button>
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <input
+            type="email"
+            id="loginEmail"
+            class="auth-input"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            id="loginPassword"
+            class="auth-input"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button type="submit" class="auth-submit-btn">Log In</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form" style="display: none;">
+        <div class="form-group">
+          <input
+            type="text"
+            id="registerName"
+            class="auth-input"
+            placeholder="Full Name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            id="registerEmail"
+            class="auth-input"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            id="registerPassword"
+            class="auth-input"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button type="submit" class="auth-submit-btn">Register</button>
+      </form>
+
+      <div class="auth-divider">
+        <span>or</span>
+      </div>
+
+      <div class="social-login-container">
+        <button class="social-btn google-btn">
+          <i class="fab fa-google"></i> Continue with Google
+        </button>
+        <button class="social-btn apple-btn">
+          <i class="fab fa-apple"></i> Continue with Apple
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth page scripts -->
+  <script src="./scripts/shared/utils.js"></script>
+  <script src="./scripts/auth/auth-toggle.js"></script>
+  <script src="./scripts/auth/auth-submit.js"></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockWizard - Assets</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/assets.css" />
+</head>
+<body>
+  <!-- Enhanced Navigation -->
+  <nav class="top-nav">
+    <div class="nav-brand">
+      <img src="../auth/assets/icons/logo.png" alt="StockWizard" class="nav-logo" />
+      <h1 class="nav-title">StockWizard</h1>
+    </div>
+    
+    <div class="nav-links">
+      <a href="../dashboard/dashboard.html" class="nav-link">
+        <i class="fas fa-chart-line"></i>
+        Dashboard
+      </a>
+      <a href="../watchlist/watchlist.html" class="nav-link">
+        <i class="fas fa-eye"></i>
+        Watchlist
+      </a>
+      <a href="../profile/profile.html" class="nav-link">
+        <i class="fas fa-user"></i>
+        Profile
+      </a>
+      <a href="#" class="nav-link active">
+        <i class="fas fa-wallet"></i>
+        Assets
+      </a>
+      <a href="../upgrade-page/upgrade-page.html" class="nav-link upgrade-link">
+        <i class="fas fa-rocket"></i>
+        Upgrade
+      </a>
+    </div>
+    
+    <div class="nav-profile">
+      <img id="user-avatar" src="" alt="User Avatar" class="user-avatar">
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Assets Header -->
+    <header class="assets-header">
+      <div class="header-content">
+        <h1>
+          <i class="fas fa-wallet"></i>
+          Your Assets
+        </h1>
+        <p>Track your investment portfolio and performance</p>
+      </div>
+      <div class="header-actions">
+        <button id="add-asset-btn" class="add-asset-btn">
+          <i class="fas fa-plus"></i>
+          Add Asset
+        </button>
+        <button id="refresh-btn" class="refresh-btn">
+          <i class="fas fa-sync-alt"></i>
+          Refresh
+        </button>
+      </div>
+    </header>
+
+    <!-- Wealth Overview Cards -->
+    <section class="wealth-overview">
+      <div class="wealth-card total-wealth">
+        <div class="wealth-icon">
+          <i class="fas fa-coins"></i>
+        </div>
+        <div class="wealth-info">
+          <div class="wealth-label">Total Portfolio Value</div>
+          <div class="wealth-value" id="total-wealth">€0.00</div>
+          <div class="wealth-change" id="total-change">
+            <span class="change-value" id="total-profit">€0.00</span>
+            <span class="change-percent" id="total-percent">(0.00%)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="wealth-stats">
+        <div class="stat-card">
+          <div class="stat-icon gains">
+            <i class="fas fa-arrow-up"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="total-gains">€0.00</div>
+            <div class="stat-label">Total Gains</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon assets">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="asset-count">0</div>
+            <div class="stat-label">Assets</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon performance">
+            <i class="fas fa-percentage"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="performance">0.00%</div>
+            <div class="stat-label">Performance</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Chart Section -->
+    <section class="chart-section">
+      <div class="section-header">
+        <h2>
+          <i class="fas fa-chart-pie"></i>
+          Portfolio Allocation
+        </h2>
+        <div class="chart-controls">
+          <button class="chart-btn active" data-chart="pie">
+            <i class="fas fa-chart-pie"></i>
+            Pie Chart
+          </button>
+          <button class="chart-btn" data-chart="doughnut">
+            <i class="fas fa-circle-notch"></i>
+            Doughnut
+          </button>
+        </div>
+      </div>
+      
+      <div class="chart-container">
+        <canvas id="assetsChart"></canvas>
+        <div id="chart-empty" class="chart-empty" style="display: none;">
+          <i class="fas fa-chart-pie"></i>
+          <h3>No Assets to Display</h3>
+          <p>Add some assets to see your portfolio allocation</p>
+          <button class="add-first-asset-btn" onclick="document.getElementById('add-asset-btn').click()">
+            <i class="fas fa-plus"></i>
+            Add Your First Asset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Assets Table Section -->
+    <section class="table-section">
+      <div class="section-header">
+        <h2>
+          <i class="fas fa-list"></i>
+          Asset Details
+        </h2>
+        <div class="table-controls">
+          <div class="sort-dropdown">
+            <select id="sort-select">
+              <option value="value-desc">Value (High to Low)</option>
+              <option value="value-asc">Value (Low to High)</option>
+              <option value="profit-desc">Profit (High to Low)</option>
+              <option value="profit-asc">Profit (Low to High)</option>
+              <option value="name-asc">Name (A to Z)</option>
+              <option value="name-desc">Name (Z to A)</option>
+            </select>
+          </div>
+          <button id="export-btn" class="export-btn">
+            <i class="fas fa-download"></i>
+            Export
+          </button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="assets-table">
+          <thead>
+            <tr>
+              <th>
+                <i class="fas fa-chart-line"></i>
+                Asset
+              </th>
+              <th>
+                <i class="fas fa-coins"></i>
+                Holdings
+              </th>
+              <th>
+                <i class="fas fa-percentage"></i>
+                Allocation
+              </th>
+              <th>
+                <i class="fas fa-arrow-trend-up"></i>
+                Profit/Loss
+              </th>
+              <th>
+                <i class="fas fa-calendar"></i>
+                Last Updated
+              </th>
+              <th>
+                <i class="fas fa-cog"></i>
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody id="assets-body">
+            <!-- Assets will be populated by JavaScript -->
+          </tbody>
+        </table>
+        
+        <div id="table-empty" class="table-empty">
+          <i class="fas fa-inbox"></i>
+          <h3>No Assets Found</h3>
+          <p>Start building your portfolio by adding your first asset</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Performance Analytics -->
+    <section class="analytics-section">
+      <div class="section-header">
+        <h2>
+          <i class="fas fa-chart-line"></i>
+          Performance Analytics
+        </h2>
+        <div class="time-filters">
+          <button class="time-btn active" data-period="1M">1M</button>
+          <button class="time-btn" data-period="3M">3M</button>
+          <button class="time-btn" data-period="6M">6M</button>
+          <button class="time-btn" data-period="1Y">1Y</button>
+          <button class="time-btn" data-period="ALL">All</button>
+        </div>
+      </div>
+      
+      <div class="analytics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="metric-info">
+            <div class="metric-value" id="best-performer">-</div>
+            <div class="metric-label">Best Performer</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="metric-info">
+            <div class="metric-value" id="avg-return">0.00%</div>
+            <div class="metric-label">Avg. Return</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <div class="metric-info">
+            <div class="metric-value" id="risk-level">Low</div>
+            <div class="metric-label">Risk Level</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="metric-info">
+            <div class="metric-value" id="investment-period">-</div>
+            <div class="metric-label">Avg. Hold Period</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Add Asset Modal -->
+  <div id="add-asset-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>
+          <i class="fas fa-plus-circle"></i>
+          Add New Asset
+        </h3>
+        <button class="modal-close" id="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <form id="add-asset-form" class="modal-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="asset-name">
+              <i class="fas fa-tag"></i>
+              Asset Name
+            </label>
+            <input type="text" id="asset-name" required placeholder="e.g., Apple Inc." />
+          </div>
+
+          <div class="form-group">
+            <label for="asset-symbol">
+              <i class="fas fa-code"></i>
+              Symbol
+            </label>
+            <input type="text" id="asset-symbol" required placeholder="e.g., AAPL" />
+          </div>
+
+          <div class="form-group">
+            <label for="asset-quantity">
+              <i class="fas fa-hashtag"></i>
+              Quantity
+            </label>
+            <input type="number" id="asset-quantity" required min="0" step="0.01" placeholder="0.00" />
+          </div>
+
+          <div class="form-group">
+            <label for="asset-price">
+              <i class="fas fa-euro-sign"></i>
+              Purchase Price
+            </label>
+            <input type="number" id="asset-price" required min="0" step="0.01" placeholder="0.00" />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="asset-date">
+              <i class="fas fa-calendar"></i>
+              Purchase Date
+            </label>
+            <input type="date" id="asset-date" required />
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" id="cancel-btn">
+            <i class="fas fa-times"></i>
+            Cancel
+          </button>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-plus"></i>
+            Add Asset
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Enhanced Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Firebase + Chart.js -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../shared/js/firebase-config.js"></script>
+  <script src="js/assets.js"></script>
+</body>
+</html>
